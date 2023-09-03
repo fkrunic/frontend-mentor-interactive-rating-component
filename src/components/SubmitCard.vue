@@ -2,29 +2,32 @@
 import { ref } from 'vue';
 import ButtonRating from './ButtonRating.vue';
 import { match, P } from 'ts-pattern'
-import { SubmissionState } from '../common';
+
+type SubmissionState 
+    = { kind: 'not-rated' }
+    | { kind: 'rating-chosen', rating: number }
 
 const submissionState = ref({ kind: 'not-rated' } as SubmissionState)
 
 const toggleRating = (rating: number): void => {
-    submissionState.value = { kind: 'rated', rating }
+    submissionState.value = { kind: 'rating-chosen', rating }
 }
 
 const isRatingSelected = (ratingOption: number, state: SubmissionState): boolean => {
     return match(state)
         .with({kind: 'not-rated'}, () => false)
-        .with({kind: 'rated', rating: P.select()}, (r) => r == ratingOption)
+        .with({kind: 'rating-chosen', rating: P.select()}, (r) => r == ratingOption)
         .exhaustive()
 }
 
 const isReadyToSubmit = (state: SubmissionState): boolean => {
-    return state.kind == 'rated'
+    return state.kind == 'rating-chosen'
 }
 
 const emit = defineEmits(['submitRating'])
 
 const handleSubmission = (state: SubmissionState): void => {
-    if (state.kind == 'rated')  {
+    if (state.kind == 'rating-chosen')  {
         console.log('Submitted: ' + state.rating )
         emit('submitRating', state.rating)
     }
