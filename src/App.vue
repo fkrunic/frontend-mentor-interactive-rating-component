@@ -14,8 +14,8 @@ const toggleRating = (rating: number): void => {
 <template>
   <Transition name="slide-fade">
     <SubmitCard 
-    v-if="submissionState.kind == 'not-rated'"
-    @submit-rating="toggleRating"
+      v-if="submissionState.kind == 'not-rated'"
+      @submit-rating="toggleRating"
     ></SubmitCard>
     <ThankYouCard v-else :rating="submissionState.rating"></ThankYouCard>
   </Transition>
