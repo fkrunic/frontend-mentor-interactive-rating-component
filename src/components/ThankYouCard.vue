@@ -18,6 +18,11 @@ defineProps<{ rating: number }>()
             rounded-2xl
 
             bg-gradient-to-b from-dark-blue/80 to-dark-blue/50
+
+            desktop:w-96
+            desktop:rounded-3xl
+            desktop:p-10
+            desktop:py-12
             ">
             <img src="../assets/img/illustration-thank-you.svg" alt="thank-you">
 
@@ -38,7 +43,14 @@ defineProps<{ rating: number }>()
             </div>
 
             <!-- Callout -->
-            <p class="text-white text-2xl">Thank you!</p>
+            <p class="
+                text-white 
+                text-2xl 
+                
+                desktop:text-3xl
+                desktop:-mb-4
+                
+            ">Thank you!</p>
             <p class="text-light-grey text-sm leading-6 text-center">
                 We appreciate you taking the time to give a rating. If you 
                 ever need more support, don't hesitate to get in touch!

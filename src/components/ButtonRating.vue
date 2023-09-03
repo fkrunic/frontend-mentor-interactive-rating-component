@@ -20,14 +20,20 @@ defineProps<{rating: number, isSelected: boolean}>()
         group
         hover:bg-medium-grey
         hover:cursor-pointer
+
+        desktop:w-14
+        desktop:h-14
         "
 
         :class="isSelected ? ['bg-orange', 'hover:bg-orange'] : []"
         @click="$emit('ratingChosen', rating)"
         >
         <p class="
-            text-medium-grey text-sm
+            text-medium-grey 
+            text-sm
             group-hover:text-white
+
+            desktop:text-base
             "
             :class="isSelected ? 'text-white': ''"
             >

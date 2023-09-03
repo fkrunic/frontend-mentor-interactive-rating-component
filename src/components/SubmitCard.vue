@@ -60,10 +60,26 @@ const buttonClasses =
       rounded-2xl
 
       bg-gradient-to-b from-dark-blue/80 to-dark-blue/50
+
+      desktop:w-96
+      desktop:rounded-3xl
       ">
 
       <!-- Star Icon -->
-      <div class="flex items-center justify-center w-10 h-10 rounded-full bg-dark-blue">
+      <div class="
+        flex 
+        items-center 
+        justify-center 
+        
+        w-10 
+        h-10 
+        
+        rounded-full 
+        bg-dark-blue
+        
+        desktop:w-12
+        desktop:h-12
+        ">
         <img class="w-4" src="../assets/img/icon-star.svg" alt="rating">
       </div>
 
