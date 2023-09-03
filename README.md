@@ -50,7 +50,7 @@ theme: {
 ```
 
 ### State Management
-We use sum types to describe the possible states of the application, which helps eliminate bugs. These states have corresponding handlers which are used by emitters to modify the application state. We use the [ts-pattern](https://github.com/gvergnaud/ts-pattern) library to emulate pattern-matching so we don't have dangling conditional statements when checking application state. 
+We use a sum type to describe the state of the application, which helps eliminate bugs. We use the [ts-pattern](https://github.com/gvergnaud/ts-pattern) library to emulate pattern-matching so we don't have dangling conditional statements when checking application state. 
 
 ```
 export type SubmissionState 
