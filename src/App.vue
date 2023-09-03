@@ -9,20 +9,36 @@ const submissionState = ref({ kind: 'not-rated' } as SubmissionState)
 const toggleRating = (rating: number): void => {
     submissionState.value = { kind: 'rated', rating }
 }
-
 </script>
 
 <template>
-  <SubmitCard 
+  <Transition name="slide-fade">
+    <SubmitCard 
     v-if="submissionState.kind == 'not-rated'"
     @submit-rating="toggleRating"
     ></SubmitCard>
-  <ThankYouCard v-else :rating="submissionState.rating"></ThankYouCard>
+    <ThankYouCard v-else :rating="submissionState.rating"></ThankYouCard>
+  </Transition>
 </template>
 
 <style scoped>
 * {
   box-sizing: border-box;
+}
+
+/* we will explain what these classes do next! */
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
 }
 </style>
 
