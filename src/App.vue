@@ -5,8 +5,16 @@ import ButtonRating from './components/ButtonRating.vue';
 
 <template>
   <div class="flex justify-center items-center min-h-screen">
+
     <!-- Card -->
-    <div class="flex flex-col bg-dark-blue">
+    <div class="
+      flex 
+      flex-col 
+
+      bg-gradient-to-b from-dark-blue to-dark-blue/50
+      ">
+
+
       <img class="w-3" src="./assets/img/icon-star.svg">
 
       <!-- Callout -->
@@ -17,7 +25,7 @@ import ButtonRating from './components/ButtonRating.vue';
       </p>
 
       <!-- Rating Selection -->
-      <div class="flex flex-row items-center">
+      <div class="flex flex-row items-center justify-center gap-4">
         <ButtonRating
           v-for="rating of [1,2,3,4,5]"
           :key="rating"
@@ -32,9 +40,13 @@ import ButtonRating from './components/ButtonRating.vue';
         flex-row 
         justify-center 
         items-center 
+
+        p-4
+
         bg-orange
+        rounded-full
         ">
-        <p class="text-white">SUBMIT</p>
+        <p class="text-white text-sm font-bold tracking-widest">SUBMIT</p>
       </div>
     </div>
   </div>

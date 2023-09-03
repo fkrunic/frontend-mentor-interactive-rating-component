@@ -3,8 +3,20 @@ defineProps<{rating: number, isSelected: boolean}>()
 </script>
 
 <template>
-    <div class="flex flex-col items-center justify-center bg-medium-grey/50">
-        <p class="text-medium-grey">{{ rating }}</p>
+    <div class="
+        flex 
+        flex-row 
+        items-center
+        justify-center
+
+        w-10
+        h-10
+
+        rounded-full
+        
+        bg-dark-blue
+        ">
+        <p class="text-medium-grey text-sm">{{ rating }}</p>
     </div>
 </template>
 
