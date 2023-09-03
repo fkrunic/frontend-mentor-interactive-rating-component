@@ -20,11 +20,18 @@ defineProps<{rating: number, isSelected: boolean}>()
         group
         hover:bg-medium-grey
         hover:cursor-pointer
-        ">
+        "
+
+        :class="isSelected ? ['bg-orange', 'hover:bg-orange'] : []"
+        >
         <p class="
             text-medium-grey text-sm
             group-hover:text-white
-            ">{{ rating }}</p>
+            "
+            :class="isSelected ? 'text-white': ''"
+            >
+            {{ rating }}
+        </p>
     </div>
 </template>
 

@@ -38,7 +38,7 @@ import ButtonRating from './components/ButtonRating.vue';
           v-for="rating of [1,2,3,4,5]"
           :key="rating"
           :rating="rating"
-          :isSelected="false"
+          :isSelected="rating == 1 ? true : false"
         ></ButtonRating>
       </div>
 
