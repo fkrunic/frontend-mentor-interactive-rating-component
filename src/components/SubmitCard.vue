@@ -2,10 +2,7 @@
 import { ref } from 'vue';
 import ButtonRating from './ButtonRating.vue';
 import { match, P } from 'ts-pattern'
-
-type SubmissionState 
-    = { kind: 'not-rated' }
-    | { kind: 'rated', rating: number }
+import { SubmissionState } from '../common';
 
 const submissionState = ref({ kind: 'not-rated' } as SubmissionState)
 

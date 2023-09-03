@@ -1,10 +1,23 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import SubmitCard from './components/SubmitCard.vue';
 import ThankYouCard from './components/ThankYouCard.vue';
+import { SubmissionState } from './common';
+
+const submissionState = ref({ kind: 'not-rated' } as SubmissionState)
+
+const toggleRating = (rating: number): void => {
+    submissionState.value = { kind: 'rated', rating }
+}
+
 </script>
 
 <template>
-  <ThankYouCard :rating="4"></ThankYouCard>
+  <SubmitCard 
+    v-if="submissionState.kind == 'not-rated'"
+    @submit-rating="toggleRating"
+    ></SubmitCard>
+  <ThankYouCard v-else :rating="submissionState.rating"></ThankYouCard>
 </template>
 
 <style scoped>
