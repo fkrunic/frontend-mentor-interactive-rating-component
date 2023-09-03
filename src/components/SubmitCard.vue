@@ -1,5 +1,42 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import ButtonRating from './ButtonRating.vue';
+import { match, P } from 'ts-pattern'
+
+type SubmissionState 
+    = { kind: 'nothing-selected' }
+    | { kind: 'selected', rating: number }
+
+const submissionState = ref({ kind: 'nothing-selected' } as SubmissionState)
+
+const toggleSelected = (rating: number): void => {
+    submissionState.value = { kind: 'selected', rating }
+}
+
+const isButtonSelected = (ratingOption: number, state: SubmissionState): boolean => {
+    return match(state)
+        .with({kind: 'nothing-selected'}, () => false)
+        .with({kind: 'selected', rating: P.select()}, (r) => r == ratingOption)
+        .exhaustive()
+}
+
+const isReadyToSubmit = (state: SubmissionState): boolean => {
+    return state.kind == 'selected'
+}
+
+// Submission button classes
+const buttonClasses = 
+    {
+        ready: {
+            div: ['bg-orange', 'hover:bg-white', 'hover:cursor-pointer'],
+            p: ['text-white', 'group-hover:text-orange']
+        },
+        notReady: {
+            div: ['bg-dark-blue'],
+            p: ['text-very-dark-blue']
+        }
+    }
+
 </script>
 
 <template>
@@ -37,7 +74,8 @@ import ButtonRating from './ButtonRating.vue';
           v-for="rating of [1,2,3,4,5]"
           :key="rating"
           :rating="rating"
-          :isSelected="rating == 1 ? true : false"
+          :isSelected="isButtonSelected(rating, submissionState)"
+          @selected="toggleSelected"
         ></ButtonRating>
       </div>
 
@@ -52,21 +90,26 @@ import ButtonRating from './ButtonRating.vue';
         p-4
 
         rounded-full
-
-        bg-orange
-        
+ 
         group
-        hover:bg-white
-        hover:cursor-pointer
-
-        ">
+        "
+        :class="
+            isReadyToSubmit(submissionState) 
+                ? buttonClasses.ready.div 
+                : buttonClasses.notReady.div
+        "
+        >
         <p class="
-          text-white 
-          text-sm font-bold 
+          text-sm 
+          font-bold 
           tracking-widest
-          
-          group-hover:text-orange
-          ">SUBMIT</p>
+          "
+          :class="
+            isReadyToSubmit(submissionState)
+                ? buttonClasses.ready.p
+                : buttonClasses.notReady.p
+          "
+          >SUBMIT</p>
       </div>
     </div>
   </div>
