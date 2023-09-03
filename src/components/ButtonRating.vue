@@ -11,12 +11,20 @@ defineProps<{rating: number, isSelected: boolean}>()
 
         w-10
         h-10
+        pt-0.5
 
         rounded-full
         
         bg-dark-blue
+
+        group
+        hover:bg-medium-grey
+        hover:cursor-pointer
         ">
-        <p class="text-medium-grey text-sm">{{ rating }}</p>
+        <p class="
+            text-medium-grey text-sm
+            group-hover:text-white
+            ">{{ rating }}</p>
     </div>
 </template>
 

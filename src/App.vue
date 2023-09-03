@@ -52,10 +52,22 @@ import ButtonRating from './components/ButtonRating.vue';
         mt-2
         p-4
 
-        bg-orange
         rounded-full
+
+        bg-orange
+        
+        group
+        hover:bg-white
+        hover:cursor-pointer
+
         ">
-        <p class="text-white text-sm font-bold tracking-widest">SUBMIT</p>
+        <p class="
+          text-white 
+          text-sm font-bold 
+          tracking-widest
+          
+          group-hover:text-orange
+          ">SUBMIT</p>
       </div>
     </div>
   </div>
