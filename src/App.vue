@@ -1,12 +1,42 @@
 <script setup lang="ts">
 // import HelloWorld from './components/HelloWorld.vue'
+import ButtonRating from './components/ButtonRating.vue';
 </script>
 
 <template>
   <div class="flex justify-center items-center min-h-screen">
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <!-- Card -->
+    <div class="flex flex-col bg-dark-blue">
+      <img class="w-3" src="./assets/img/icon-star.svg">
+
+      <!-- Callout -->
+      <p class="text-white text-2xl">How did we do?</p>
+      <p class="text-light-grey text-sm leading-6">
+        Please let us know how we did with your support request.
+        All feedback is appreciated to help us improve our offering!
+      </p>
+
+      <!-- Rating Selection -->
+      <div class="flex flex-row items-center">
+        <ButtonRating
+          v-for="rating of [1,2,3,4,5]"
+          :key="rating"
+          :rating="rating"
+          :isSelected="false"
+        ></ButtonRating>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="
+        flex 
+        flex-row 
+        justify-center 
+        items-center 
+        bg-orange
+        ">
+        <p class="text-white">SUBMIT</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -20,7 +50,7 @@
 export default {
   data() {
     return {
-      bodyClass: 'font-overpass'
+      bodyClass: 'font-overpass bg-very-dark-blue'
     };
   },
   mounted() {
