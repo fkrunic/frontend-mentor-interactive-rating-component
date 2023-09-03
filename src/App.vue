@@ -13,7 +13,7 @@ import ButtonRating from './components/ButtonRating.vue';
       gap-4
 
       p-6
-      m-4
+      m-6
 
       rounded-2xl
 
