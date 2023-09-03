@@ -24,6 +24,15 @@ const isReadyToSubmit = (state: SubmissionState): boolean => {
     return state.kind == 'rated'
 }
 
+const emit = defineEmits(['submitRating'])
+
+const handleSubmission = (state: SubmissionState): void => {
+    if (state.kind == 'rated')  {
+        console.log('Submitted: ' + state.rating )
+        emit('submitRating', state.rating)
+    }
+}
+
 // Submission button classes
 const buttonClasses = 
     {
@@ -98,6 +107,7 @@ const buttonClasses =
                 ? buttonClasses.ready.div 
                 : buttonClasses.notReady.div
         "
+        @click="handleSubmission(submissionState)"
         >
         <p class="
           text-sm 
