@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import SubmitCard from './components/SubmitCard.vue';
+import ThankYouCard from './components/ThankYouCard.vue';
 </script>
 
 <template>
-  <SubmitCard></SubmitCard>
+  <ThankYouCard :rating="4"></ThankYouCard>
 </template>
 
 <style scoped>
