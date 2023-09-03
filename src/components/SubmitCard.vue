@@ -4,24 +4,24 @@ import ButtonRating from './ButtonRating.vue';
 import { match, P } from 'ts-pattern'
 
 type SubmissionState 
-    = { kind: 'nothing-selected' }
-    | { kind: 'selected', rating: number }
+    = { kind: 'not-rated' }
+    | { kind: 'rated', rating: number }
 
-const submissionState = ref({ kind: 'nothing-selected' } as SubmissionState)
+const submissionState = ref({ kind: 'not-rated' } as SubmissionState)
 
-const toggleSelected = (rating: number): void => {
-    submissionState.value = { kind: 'selected', rating }
+const toggleRating = (rating: number): void => {
+    submissionState.value = { kind: 'rated', rating }
 }
 
-const isButtonSelected = (ratingOption: number, state: SubmissionState): boolean => {
+const isRatingSelected = (ratingOption: number, state: SubmissionState): boolean => {
     return match(state)
-        .with({kind: 'nothing-selected'}, () => false)
-        .with({kind: 'selected', rating: P.select()}, (r) => r == ratingOption)
+        .with({kind: 'not-rated'}, () => false)
+        .with({kind: 'rated', rating: P.select()}, (r) => r == ratingOption)
         .exhaustive()
 }
 
 const isReadyToSubmit = (state: SubmissionState): boolean => {
-    return state.kind == 'selected'
+    return state.kind == 'rated'
 }
 
 // Submission button classes
@@ -74,8 +74,8 @@ const buttonClasses =
           v-for="rating of [1,2,3,4,5]"
           :key="rating"
           :rating="rating"
-          :isSelected="isButtonSelected(rating, submissionState)"
-          @selected="toggleSelected"
+          :isSelected="isRatingSelected(rating, submissionState)"
+          @rating-chosen="toggleRating"
         ></ButtonRating>
       </div>
 

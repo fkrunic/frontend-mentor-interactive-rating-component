@@ -23,7 +23,7 @@ defineProps<{rating: number, isSelected: boolean}>()
         "
 
         :class="isSelected ? ['bg-orange', 'hover:bg-orange'] : []"
-        @click="$emit('selected', rating)"
+        @click="$emit('ratingChosen', rating)"
         >
         <p class="
             text-medium-grey text-sm
